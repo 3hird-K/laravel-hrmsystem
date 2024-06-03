@@ -15,6 +15,7 @@ class HrUser extends Authenticatable
         'name',
         'email',
         'username',
-        'password'
+        'password',
+        'role'
     ];
 }

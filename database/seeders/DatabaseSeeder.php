@@ -19,12 +19,14 @@ class DatabaseSeeder extends Seeder
             'username' => 'Administrator',
             'email'=> 'admin@laravel.com',
             'password' => Hash::make('pass2k24'),
+            'role'=> 'admin'
         ]);
 
         User::factory()->create([
             'username' => 'Hrm_Overflow',
             'email'=> 'overflow@homeoffice.com',
             'password' => Hash::make('HomeOffice'),
+            'role'=> 'user'
         ]);
     }
 }

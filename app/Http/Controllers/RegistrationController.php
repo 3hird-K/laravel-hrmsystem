@@ -30,6 +30,7 @@ class RegistrationController extends Controller
             'email' => $request->email,
             'username' => $request->username,
             'password' => Hash::make($request->password),
+            'role' => 'user'
         ]);
         return redirect()->route('register')->with('success', 'Registration successful, User is Added.');
 
