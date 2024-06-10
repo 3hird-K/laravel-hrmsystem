@@ -44,48 +44,6 @@ class AuthController extends Controller
 
 
 
-//    public function login(Request $request)
-// {
-//     $credentials = $request->validate([
-//         'username' => 'required|string',
-//         'password' => 'required|string',
-//     ]);
-
-//     $user = HrUser::where('username', $credentials['username'])->first();
-
-//     if (!$user || !Hash::check($credentials['password'], $user->password) ) {
-//         return redirect()->route('login')->with('error', 'Invalid username or password.');
-//         if($user->role === "user"){
-//             return redirect()->route("login")->with("error", "")->with('error', 'You do not have permission to access this page.');
-//         }
-//     }
-//     Auth::login($user);
-//     return redirect()->intended('/');
-    
-// // }
-// public function login(Request $request)
-// {
-//     $credentials = $request->validate([
-//         'username' => 'required|string',
-//         'password' => 'required|string',
-//     ]);
-
-//     $user = HrUser::where('username', $credentials['username'])->first();
-
-//     if (!$user || !Hash::check($credentials['password'], $user->password)) {
-//         return redirect()->route('login')->with('error', 'Invalid username or password.');
-//     }
-
-//     Auth::login($user);
-
-//     if ($user->role === 'admin') {
-//         return redirect()->intended('/register');
-//     }else{
-//         return redirect()->intended('/');
-//     }
-
-    
-// }
 
 public function login(Request $request)
 {
