@@ -8,8 +8,11 @@ use App\Http\Middleware\AdminMiddleware;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.admin');
 })->name('home');
+Route::get('/dashboard', function () {
+    return view('dashboard.dashboard');
+})->name('dashboard');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

@@ -13,12 +13,12 @@
                     
                     <div class="input-box">
                         <header class="h2">Administrator</header>
-                        <div class="input-field">
-                            <input type="text" class="input" id="username" required name="username">
+                        <div class="input-field1">
+                            <input type="text" class="input1" id="username" required name="username">
                             <label for="username">Username</label>
                         </div>
-                        <div class="input-field">
-                            <input type="password" class="input" id="password" required  name="password">
+                        <div class="input-field1">
+                            <input type="password" class="input1" id="password" required  name="password">
                             <label for="password">Password</label>
                         </div>
                         <div class="input-field">
