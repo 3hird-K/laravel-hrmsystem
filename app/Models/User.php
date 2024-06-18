@@ -23,6 +23,16 @@ class User extends Authenticatable
         'role',
     ];
 
+    public function isAdmin()
+    {
+        return $this->role === 'admin'; // Adjust based on your role setup
+    }
+    public function isHrUser()
+    {
+        return $this->role === 'user';
+    }
+
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -33,4 +43,3 @@ class User extends Authenticatable
         'remember_token',
     ];
 }
-

@@ -24,7 +24,8 @@ class Kernel extends HttpKernel
     ];
 
     protected $routeMiddleware = [
-        'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'admin' => \App\Http\Middleware\AdminMiddleware::class, // Middleware for administrators
+        'user' => \App\Http\Middleware\DashboardMiddleware::class, // Middleware for HR users
+        'auth' => \App\Http\Middleware\Authenticate::class, // Default Laravel authentication middleware
     ];
 }
-

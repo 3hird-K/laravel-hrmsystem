@@ -8,9 +8,9 @@
         <div class="row">
             <div id="right" class="col-md-6 right animate-in">
                 <form action="{{ route('admin') }}" method="POST">
-                    @csrf 
+                    @csrf
                     @method('POST')
-                    
+
                     <div class="input-box">
                         <header class="h2">Administrator</header>
                         <div class="input-field text-center">
@@ -18,7 +18,7 @@
                             <label for="username">Username</label>
                         </div>
                         <div class="input-field text-center">
-                            <input type="password" class="input text-center" id="password" required  name="password">
+                            <input type="password" class="input text-center" id="password" required name="password">
                             <label for="password">Password</label>
                         </div>
                         <div class="input-field">
@@ -26,9 +26,9 @@
                         </div>
 
                         @if (session('error'))
-                            <div class="alert alert-danger mt-3">
-                                {{ session('error') }}
-                            </div>
+                        <div class="alert alert-danger mt-3">
+                            {{ session('error') }}
+                        </div>
                         @endif
 
                         <div class="signin">

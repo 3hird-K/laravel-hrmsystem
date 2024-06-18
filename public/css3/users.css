@@ -1,0 +1,25 @@
+.col-md-12 input[type="file"] {
+    display: inline-block;
+    width: auto;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Add hover effect to the file input */
+.col-md-12 input[type="file"]:hover {
+    background-color: #e2e2e2;
+    border-color: #888;
+}
+
+/* Style the file input when focused */
+.col-md-12 input[type="file"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
