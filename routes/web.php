@@ -1,6 +1,8 @@
 <?php
 
 // routes/web.php
+
+use App\Http\Controllers\AttendanceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegistrationController;
@@ -12,6 +14,9 @@ use App\Http\Middleware\DashboardMiddleware;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\RegularEmployeeController;
 
+// Route::get("/", function () {
+//     return view("welcome");
+// });
 
 Route::get('/', [AuthController::class, 'showLoginForm'])->name('welcome');
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -66,4 +71,9 @@ Route::middleware(['auth', DashboardMiddleware::class])->group(function () {
     // Departments
     Route::post('/storeDepartment', [DepartmentController::class, 'store'])->name('department.store');
     Route::get('/deleteDeparment/{id}', [DepartmentController::class, 'destroy'])->name('department.destroy');
+
+
+
+    // Attendance
+    Route::post('/Attendance',[AttendanceController::class,'store'])->name('attendance.store');
 });

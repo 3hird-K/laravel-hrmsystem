@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\HrUser;
@@ -20,11 +21,13 @@ class DashboardController extends Controller
 
     public function showDashboardForm()
     {
+        $attendance = Attendance::all();
         $hr_user = HrUser::all();
         $admins = User::all();
         $supervisors = Coach::all();
         $employees = Employee::all();
-        return view('dashboard.dashboard', compact('hr_user', 'admins', 'supervisors', 'employees'));
+        $departments = Department::all();
+        return view('dashboard.dashboard', compact('attendance','hr_user', 'admins', 'supervisors', 'employees', 'departments'));
     }
 
     public function logout()
@@ -45,10 +48,11 @@ class DashboardController extends Controller
         // $supervisor = Coach::all();
         // return view('dashboard.list_employee', compact('employee','supervisor'));
         // Coach::paginate(5);
+        $departments = Department::all();
         $employees = Employee::all();
         $employees = Employee::paginate(5);
         $supervisors = Coach::all();
-        return view('dashboard.list_employee', compact('employees', 'supervisors'));
+        return view('dashboard.list_employee', compact('departments', 'employees', 'supervisors'));
     }
 
 

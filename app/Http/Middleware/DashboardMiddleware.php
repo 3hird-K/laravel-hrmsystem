@@ -17,7 +17,7 @@ class DashboardMiddleware
     }
     // public function handle($request, Closure $next)
     // {
-    //     if ($request->user() && $request->user()->isHrUser()) {
+    //     if ($request->user() && !$request->user()->isHrUser()) {
     //         return $next($request);
     //     }
 

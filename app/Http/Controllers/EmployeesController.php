@@ -39,6 +39,7 @@ class EmployeesController extends Controller
             'position' => 'required',
             'Supervisor' => 'nullable',
             'contact' => 'required|regex:/^09[0-9]{9}$/',
+            'department_id' => 'required|exists:departments,id',
             'address' => 'required',
             'supervisor-profile' => 'required|image|mimes:jpg,png',
         ]);
@@ -49,9 +50,12 @@ class EmployeesController extends Controller
             $newCoach->firstname = $request->input('firstname');
             $newCoach->lastname = $request->input('lastname');
             $newCoach->position = $request->input('position');
-            $newCoach->Supervisor = $request->input('Supervisor') ?: 'Donna Jane D. Rojo'; // Default value if Supervisor is not provided
+            $newCoach->Supervisor = $request->input('Supervisor') ?: 'Donna Jane D. Rojo';
             $newCoach->contact = $request->input('contact');
+            // $newCoach->department_name = $request->input('department_name');
+            $newCoach->department_id = $request->input('department_id');
             $newCoach->address = $request->input('address');
+
 
             // Handle file upload
             if ($request->hasFile('supervisor-profile')) {
@@ -68,6 +72,58 @@ class EmployeesController extends Controller
             return redirect('/employee')->with('fail', 'User Failed to Register or Has Duplicates.');
         }
     }
+//     public function store(Request $request)
+// {
+//     $request->validate([
+//         'firstname' => 'required',
+//         'lastname' => 'required',
+//         'position' => 'required',
+//         'supervisor_id' => 'nullable|exists:coaches,id', // Validation rule for supervisor_id
+//         'contact' => 'required|regex:/^09[0-9]{9}$/',
+//         'department_name' => 'required',
+//         'address' => 'required',
+//         'supervisor-profile' => 'required|image|mimes:jpg,png',
+//     ]);
+
+//     try {
+//         // Handle form submission
+//         $newCoach = new Coach();
+//         $newCoach->firstname = $request->input('firstname');
+//         $newCoach->lastname = $request->input('lastname');
+//         $newCoach->position = $request->input('position');
+
+//         // Fetch supervisor's name if supervisor_id is provided
+//         if ($request->input('supervisor_id')) {
+//             $supervisor = Coach::find($request->input('supervisor_id'));
+//             if ($supervisor) {
+//                 $newCoach->Supervisor = $supervisor->firstname . ' ' . $supervisor->lastname;
+//             } else {
+//                 $newCoach->Supervisor = 'Donna Jane D. Rojo'; // Default value
+//             }
+//         } else {
+//             $newCoach->Supervisor = 'Donna Jane D. Rojo'; // Default value
+//         }
+
+//         $newCoach->contact = $request->input('contact');
+//         $newCoach->department_name = $request->input('department_name');
+//         $newCoach->address = $request->input('address');
+
+//         // Handle file upload
+//         if ($request->hasFile('supervisor-profile')) {
+//             $image = $request->file('supervisor-profile');
+//             $path = $image->store('public/images');
+//             $url = Storage::url($path);
+//             $newCoach->image = $url;
+//         }
+
+//         $newCoach->save();
+
+//         return redirect('/employee')->with('success', 'Employee Added Successfully');
+//     } catch (\Exception $e) {
+//         return redirect('/employee')->with('fail', 'User Failed to Register or Has Duplicates.');
+//     }
+// }
+
 
 
 
@@ -101,8 +157,9 @@ class EmployeesController extends Controller
             'position' => 'required',
             'Supervisor' => 'nullable',
             'contact' => 'required|regex:/^09[0-9]{9}$/',
+            'department_name' => 'nullable',
             'address' => 'required',
-            'supervisor-profile' => 'nullable|image|mimes:jpg,png', // allow null or image file
+            'supervisor-profile' => 'required|image|mimes:jpg,png',
         ]);
 
         try {
@@ -118,6 +175,7 @@ class EmployeesController extends Controller
             $supervisor->position = $request->input('position');
             $supervisor->Supervisor = $request->input('Supervisor') ?: 'Donna Jane D. Rojo'; // Default value if Supervisor is not provided
             $supervisor->contact = $request->input('contact');
+            $supervisor->department_name = $request->input('department_name');
             $supervisor->address = $request->input('address');
 
             // Handle file upload if a new image is provided
